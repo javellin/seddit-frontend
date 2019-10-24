@@ -43,7 +43,7 @@ export default function Post({ post, handleVote }) {
   const [upvotes, setUpvotes] = React.useState(post.upvotes);
   const [loading, setLoading] = React.useState(false);
 
-  const vote = async () => {
+  const vote = React.useCallback(async () => {
     setLoading(true);
     setUpvoted(!upvoted);
     const savedPostsResponse = await handleVote(post.id, upvoted ? -1 : 1);
@@ -52,7 +52,7 @@ export default function Post({ post, handleVote }) {
       : localStorageService.addToUpvotedPosts(post.id);
     setUpvotes(savedPostsResponse.data);
     setLoading(false);
-  };
+  }, [handleVote, post.id, upvoted]);
 
   return (
     <Card className={classes.card}>

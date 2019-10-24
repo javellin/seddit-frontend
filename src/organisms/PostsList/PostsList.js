@@ -11,11 +11,11 @@ export default function PostsList({ posts }) {
     }
   }, []);
 
-  const handleVote = async (postId, vote) => {
+  const handleVote = React.useCallback(async (postId, vote) => {
     return vote === 1
       ? postsService.upvote(postId)
       : postsService.removeUpvote(postId);
-  };
+  }, []);
 
   return (
     <div>

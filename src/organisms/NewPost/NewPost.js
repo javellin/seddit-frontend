@@ -25,7 +25,7 @@ export default function({ handleCreatePost }) {
   const [title, setTitle] = React.useState();
   const [body, setBody] = React.useState();
 
-  const createPost = () => {
+  const createPost = React.useCallback(() => {
     handleCreatePost({
       title,
       body
@@ -33,7 +33,7 @@ export default function({ handleCreatePost }) {
 
     setTitle('');
     setBody('');
-  };
+  }, [body, handleCreatePost, title]);
 
   return (
     <Card className={classes.card}>
