@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 import KebabMenu from "atoms/KebabMenu";
-import SearchBar from "molecules/SearchBar";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +32,6 @@ export default function Header() {
         <Typography className={classes.title} variant="h6" noWrap>
           Seddit
         </Typography>
-        <SearchBar />
       </Toolbar>
     </AppBar>
   );
