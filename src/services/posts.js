@@ -1,20 +1,20 @@
-import axios from "axios";
+import api from 'services/api';
 import { toast } from "react-toastify";
 
 const POSTS_URL = "/posts";
 
 export default {
   fetchPosts: () => {
-    return axios.get(POSTS_URL);
+    return api.get(POSTS_URL);
   },
   upvote: postId => {
-    return axios.put(`${POSTS_URL}/${postId}/upvote`);
+    return api.put(`${POSTS_URL}/${postId}/upvote`);
   },
   removeUpvote: postId => {
-    return axios.put(`${POSTS_URL}/${postId}/removeUpvote`);
+    return api.put(`${POSTS_URL}/${postId}/removeUpvote`);
   },
   createPost: async post => {
-    const response = await axios.post(POSTS_URL, post);
+    const response = await api.post(POSTS_URL, post);
     if (response.status === 200) {
       toast.success("Post created successfully!");
       return;
